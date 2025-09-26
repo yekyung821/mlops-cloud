@@ -1,5 +1,12 @@
+import sys
+import os
+
+# 현재 파일 기준으로 src 경로를 Python 경로에 추가
+sys.path.append(os.path.join(os.path.dirname(__file__), "../opt/mlops/src"))
+
 import pytest
-from src.utils.utils import auto_increment_run_suffix, model_dir
+
+from utils.utils import auto_increment_run_suffix, model_dir
 
 # -------------------------------
 # auto_increment_run_suffix 테스트
