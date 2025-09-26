@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -r opt/mlops/src/requirements.txt
+          pip install -r opt/requirements.txt
           pip install pytest
 
       - name: Run tests
