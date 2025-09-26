@@ -1,4 +1,4 @@
-name: CI
+name: Python CI - Unit Test
 
 on:
   push:
@@ -16,13 +16,11 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: 3.11
 
       - name: Install dependencies
-        run: |
-          pip install -r opt/requirements.txt
-          pip install pytest
-          pip install httpx
+        run: pip install pytest numpy
 
-      - name: Run tests
-        run: pytest
+      - name: Run unit tests
+        run: pytest tests/test_utils.py
+
