@@ -1,27 +1,20 @@
 import sys
 import os
+from unittest.mock import patch
+import pandas as pd
+import pytest
 
 # repo 구조 기준 src 디렉토리까지 경로 추가
 sys.path.append(os.path.join(os.path.dirname(__file__), "../opt/mlops/src"))
 
-from fastapi.testclient import TestClient
-from webapp import app
-import pandas as pd
-
-# webapp.py에서 game_df 읽는 부분을 상대 경로로 변경
+# webapp import 전에 patch 처리
 current_dir = os.path.dirname(os.path.abspath(__file__))
 csv_path = os.path.join(current_dir, "../opt/mlops/dataset/games_log.csv")
 
-# 테스트 환경에서만 game_df를 읽도록 patch
-from unittest.mock import patch
+with patch("pandas.read_csv", lambda _: pd.read_csv(csv_path)):
+    from webapp import app  # import 이후 pd.read_csv는 patch 적용됨
 
-import pytest
-
-@pytest.fixture(autouse=True)
-def mock_game_df():
-    # pandas.read_csv를 patch해서 상대 경로 사용
-    with patch("pandas.read_csv", lambda _: pd.read_csv(csv_path)):
-        yield
+from fastapi.testclient import TestClient
 
 client = TestClient(app)
 
