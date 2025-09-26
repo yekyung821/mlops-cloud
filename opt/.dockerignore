@@ -1,0 +1,17 @@
+# 환경 변수
+*.env
+**/*.env
+
+# 로그/캐시
+mlops/src/wandb/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+.ipynb_checkpoints/
+
+# OS/IDE
+.DS_Store
+.vscode/
+.idea/
