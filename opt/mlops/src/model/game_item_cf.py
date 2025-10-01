@@ -67,3 +67,5 @@ def model_save(model_name, sim_matrix, train_matrix, epoch, recall_history=None)
         pickle.dump(save_data, f)
 
     print(f"Model saved to {dst}")
+
+    return dst
