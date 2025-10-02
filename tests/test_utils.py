@@ -1,5 +1,9 @@
 import sys
 import os
+from unittest.mock import MagicMock
+
+# 필요 없는 모듈 pytest에서 자동으로 mock 처리
+sys.modules['boto3'] = MagicMock()
 
 # 현재 파일 기준으로 src 경로를 Python 경로에 추가
 sys.path.append(os.path.join(os.path.dirname(__file__), "../opt/mlops/src"))
