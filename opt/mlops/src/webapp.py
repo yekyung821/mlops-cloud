@@ -36,11 +36,11 @@ templates = Jinja2Templates(directory=str(APP_DIR / "templates"))
 # ─────────────────────────────────────────────────────────────
 # DB 연결
 # ─────────────────────────────────────────────────────────────
-MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
-MYSQL_PORT = os.getenv("MYSQL_PORT", "3306")
-MYSQL_USER = os.getenv("MYSQL_USER", "root")
-MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "root")
-MYSQL_DATABASE = os.getenv("MYSQL_DATABASE", "mlops")
+MYSQL_HOST = os.getenv("MYSQL_HOST")
+MYSQL_PORT = os.getenv("MYSQL_PORT")
+MYSQL_USER = os.getenv("MYSQL_USER")
+MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD")
+MYSQL_DATABASE = os.getenv("MYSQL_DATABASE")
 
 DATABASE_URL = (
     f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}"
