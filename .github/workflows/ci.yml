@@ -34,11 +34,11 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
-      # 5. 태그 계산 (예: 기존 v4 → v5)
+      # 5. 태그 계산 (예: 기존 v5 → v6)
       - name: Calculate next tag
         id: tag
         run: |
-          CURRENT_TAG=v4
+          CURRENT_TAG=v5
           NUM=${CURRENT_TAG#v}
           NEXT_NUM=$((NUM+1))
           echo "NEXT_TAG=v$NEXT_NUM" >> $GITHUB_ENV
